@@ -12,6 +12,7 @@ class _HmcategoryState extends State<Hmcategory> {
   Widget build(BuildContext context) {
     return SizedBox(
         height: 100,
+        // ListView外层要包SizeBox或者Container确定高度
         child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: 10,
