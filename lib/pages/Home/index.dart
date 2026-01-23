@@ -31,6 +31,11 @@ class _HomeViewState extends State<HomeView> {
   ];
 
   List<CategoryItem> _categoryList = [];
+  SpecialRecommendResult _specialRecommendResult = SpecialRecommendResult(
+    id: "",
+    title: "",
+    subTypes: [],
+  );
 
   // 获取滚动容器的内容
   List<Widget> _getScrollChildren() {
@@ -57,7 +62,9 @@ class _HomeViewState extends State<HomeView> {
         ),
       ),
       SliverToBoxAdapter(
-        child: Hmsuggestion(),
+        child: Hmsuggestion(
+          specialRecommendResult: _specialRecommendResult,
+        ),
       ),
       SliverToBoxAdapter(
         child: SizedBox(
@@ -97,6 +104,7 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
     _getBannerList();
     _getCategoryList();
+    _getSpecialRecommendList();
   }
 
   // 获取Banner列表
@@ -108,6 +116,12 @@ class _HomeViewState extends State<HomeView> {
   // 获取分类列表
   void _getCategoryList() async {
     _categoryList = await getCategoryListAPI();
+    setState(() {});
+  }
+
+  // 获取特惠推荐列表
+  void _getSpecialRecommendList() async {
+    _specialRecommendResult = await getSpecialRecommendListAPI();
     setState(() {});
   }
 

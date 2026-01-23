@@ -20,3 +20,10 @@ Future<List<CategoryItem>> getCategoryListAPI() async {
     return CategoryItem.fromJson(item as Map<String, dynamic>);
   }).toList();
 }
+
+// 获取特惠推荐列表
+Future<SpecialRecommendResult> getSpecialRecommendListAPI() async {
+  // 返回请求
+  return SpecialRecommendResult.fromJson(
+      await diorequest.get(HttpConstants.SPECIAL_RECOMMEND_LIST));
+}
