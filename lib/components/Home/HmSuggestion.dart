@@ -74,7 +74,6 @@ class _HmsuggestionState extends State<Hmsuggestion> {
             height: 10,
           ),
           Container(
-            height: 30,
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
             alignment: Alignment.center,
             decoration: BoxDecoration(

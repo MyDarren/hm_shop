@@ -27,3 +27,17 @@ Future<SpecialRecommendResult> getSpecialRecommendListAPI() async {
   return SpecialRecommendResult.fromJson(
       await diorequest.get(HttpConstants.SPECIAL_RECOMMEND_LIST));
 }
+
+// 获取热榜推荐列表
+Future<SpecialRecommendResult> getInVogueListAPI() async {
+  // 返回请求
+  return SpecialRecommendResult.fromJson(
+      await diorequest.get(HttpConstants.IN_VOGUE_LIST));
+}
+
+// 获取一站式推荐列表
+Future<SpecialRecommendResult> getOneStopListAPI() async {
+  // 返回请求
+  return SpecialRecommendResult.fromJson(
+      await diorequest.get(HttpConstants.ONE_STOP_LIST));
+}

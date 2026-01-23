@@ -37,6 +37,20 @@ class _HomeViewState extends State<HomeView> {
     subTypes: [],
   );
 
+  // 获取热榜推荐列表
+  SpecialRecommendResult _inVogueResult = SpecialRecommendResult(
+    id: "",
+    title: "",
+    subTypes: [],
+  );
+
+  // 获取一站式推荐列表
+  SpecialRecommendResult _oneStopResult = SpecialRecommendResult(
+    id: "",
+    title: "",
+    subTypes: [],
+  );
+
   // 获取滚动容器的内容
   List<Widget> _getScrollChildren() {
     return [
@@ -78,13 +92,19 @@ class _HomeViewState extends State<HomeView> {
               direction: Axis.horizontal,
               children: [
                 Expanded(
-                  child: Hmhot(),
+                  child: Hmhot(
+                    result: _inVogueResult,
+                    type: "hot",
+                  ),
                 ),
                 SizedBox(
                   width: 10,
                 ),
                 Expanded(
-                  child: Hmhot(),
+                  child: Hmhot(
+                    result: _oneStopResult,
+                    type: "step",
+                  ),
                 ),
               ],
             )),
@@ -105,6 +125,8 @@ class _HomeViewState extends State<HomeView> {
     _getBannerList();
     _getCategoryList();
     _getSpecialRecommendList();
+    _getInVogueList();
+    _getOneStopList();
   }
 
   // 获取Banner列表
@@ -122,6 +144,18 @@ class _HomeViewState extends State<HomeView> {
   // 获取特惠推荐列表
   void _getSpecialRecommendList() async {
     _specialRecommendResult = await getSpecialRecommendListAPI();
+    setState(() {});
+  }
+
+  // 获取热榜推荐列表
+  void _getInVogueList() async {
+    _inVogueResult = await getInVogueListAPI();
+    setState(() {});
+  }
+
+  // 获取一站式推荐列表
+  void _getOneStopList() async {
+    _oneStopResult = await getOneStopListAPI();
     setState(() {});
   }
 
