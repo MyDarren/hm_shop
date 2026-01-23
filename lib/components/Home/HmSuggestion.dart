@@ -46,7 +46,7 @@ class _HmsuggestionState extends State<Hmsuggestion> {
     );
   }
 
-  List<Widget> _getChildList() {
+  List<Widget> _getChildrenList() {
     List<GoodsItem> list = _getDisplayItems();
     return List.generate(list.length, (index) {
       return Column(
@@ -111,7 +111,7 @@ class _HmsuggestionState extends State<Hmsuggestion> {
                 Expanded(
                     child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: _getChildList(),
+                  children: _getChildrenList(),
                 ))
               ],
             )

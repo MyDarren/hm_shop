@@ -51,6 +51,8 @@ class _HomeViewState extends State<HomeView> {
     subTypes: [],
   );
 
+  List<GoodDetailItem> _recommandList = [];
+
   // 获取滚动容器的内容
   List<Widget> _getScrollChildren() {
     return [
@@ -114,7 +116,9 @@ class _HomeViewState extends State<HomeView> {
           height: 10,
         ),
       ),
-      Hmmorelist(),
+      Hmmorelist(
+        recommandList: _recommandList,
+      ),
     ];
   }
 
@@ -127,6 +131,7 @@ class _HomeViewState extends State<HomeView> {
     _getSpecialRecommendList();
     _getInVogueList();
     _getOneStopList();
+    _getRecommandList();
   }
 
   // 获取Banner列表
@@ -156,6 +161,11 @@ class _HomeViewState extends State<HomeView> {
   // 获取一站式推荐列表
   void _getOneStopList() async {
     _oneStopResult = await getOneStopListAPI();
+    setState(() {});
+  }
+
+  void _getRecommandList() async {
+    _recommandList = await getRecommandListAPI({"limit": 10});
     setState(() {});
   }
 
