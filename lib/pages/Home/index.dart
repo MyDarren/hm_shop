@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hm_shop/api/home.dart';
-import 'package:hm_shop/components/Home/HmCAtegory.dart';
+import 'package:hm_shop/components/Home/HmCategory.dart';
 import 'package:hm_shop/components/Home/HmHot.dart';
 import 'package:hm_shop/components/Home/HmMoreList.dart';
 import 'package:hm_shop/components/Home/HmSlider.dart';
@@ -30,6 +30,8 @@ class _HomeViewState extends State<HomeView> {
     //         "https://yjy-teach-oss.oss-cn-beijing.aliyuncs.com/meituan/3.jpg"),
   ];
 
+  List<CategoryItem> _categoryList = [];
+
   // 获取滚动容器的内容
   List<Widget> _getScrollChildren() {
     return [
@@ -45,7 +47,9 @@ class _HomeViewState extends State<HomeView> {
       ),
       // SliverGrid、SliverList只能纵向排列
       SliverToBoxAdapter(
-        child: Hmcategory(),
+        child: Hmcategory(
+          categoryList: _categoryList,
+        ),
       ),
       SliverToBoxAdapter(
         child: SizedBox(
@@ -92,10 +96,18 @@ class _HomeViewState extends State<HomeView> {
     // TODO: implement initState
     super.initState();
     _getBannerList();
+    _getCategoryList();
   }
 
+  // 获取Banner列表
   void _getBannerList() async {
     _bannerList = await getBannerListAPI();
+    setState(() {});
+  }
+
+  // 获取分类列表
+  void _getCategoryList() async {
+    _categoryList = await getCategoryListAPI();
     setState(() {});
   }
 

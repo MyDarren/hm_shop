@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hm_shop/viewmodels/home.dart';
 
 class Hmcategory extends StatefulWidget {
-  const Hmcategory({super.key});
+  final List<CategoryItem> categoryList;
+  const Hmcategory({super.key, required this.categoryList});
 
   @override
   State<Hmcategory> createState() => _HmcategoryState();
@@ -15,17 +17,30 @@ class _HmcategoryState extends State<Hmcategory> {
         // ListView外层要包SizeBox或者Container确定高度
         child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: 10,
+            itemCount: widget.categoryList.length,
             itemBuilder: (context, index) {
               return Container(
                 alignment: Alignment.center,
                 width: 80,
                 height: 100,
-                color: Colors.blue,
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 231, 232, 234),
+                  borderRadius: BorderRadius.circular(40),
+                ),
                 margin: EdgeInsets.symmetric(horizontal: 10),
-                child: Text(
-                  "分类$index",
-                  style: TextStyle(color: Colors.white),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.network(
+                      widget.categoryList[index].picture ?? "",
+                      width: 30,
+                      height: 30,
+                    ),
+                    Text(
+                      widget.categoryList[index].name ?? "",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ],
                 ),
               );
             }));
