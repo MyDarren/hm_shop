@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:hm_shop/viewmodels/home.dart';
 
-class Hmhot extends StatefulWidget {
+class HmHot extends StatefulWidget {
   final SpecialRecommendResult result;
   final String type;
-  const Hmhot({super.key, required this.result, required this.type});
+  const HmHot({super.key, required this.result, required this.type});
 
   @override
-  State<Hmhot> createState() => _HmhotState();
+  State<HmHot> createState() => _HmHotState();
 }
 
-class _HmhotState extends State<Hmhot> {
+class _HmHotState extends State<HmHot> {
   // 获取前两条数据
   // 计算属性 .xxx就可以调用
   // 方法() 调用

@@ -43,7 +43,7 @@ Future<SpecialRecommendResult> getOneStopListAPI() async {
 }
 
 // 获取推荐列表
-Future<List<GoodDetailItem>> getRecommandListAPI(
+Future<List<GoodDetailItem>> getRecommendListAPI(
     Map<String, dynamic> params) async {
   // 返回请求
   return ((await diorequest.get(HttpConstants.RECOMMEND_LIST, params: params))

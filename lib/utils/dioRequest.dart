@@ -2,9 +2,9 @@
 import 'package:dio/dio.dart';
 import 'package:hm_shop/constants/index.dart';
 
-class Diorequest {
+class DioRequest {
   final _dio = Dio(); // dio请求对象
-  Diorequest() {
+  DioRequest() {
     _dio.options
       ..baseUrl = GlobalConstants.BASE_URL
       ..connectTimeout = Duration(seconds: GlobalConstants.TIME_OUT)
@@ -48,6 +48,6 @@ class Diorequest {
   }
 }
 
-final diorequest = Diorequest();
+final diorequest = DioRequest();
 // dio请求工具发出请求，返回的数据 Response<dynamic>.data
 // 把所有接口的data解放出来，拿到真正的数据，要判断业务状态码是不是等于1

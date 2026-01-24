@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:hm_shop/viewmodels/home.dart';
 
-class Hmsuggestion extends StatefulWidget {
+class HmSuggestion extends StatefulWidget {
   final SpecialRecommendResult specialRecommendResult;
-  const Hmsuggestion({super.key, required this.specialRecommendResult});
+  const HmSuggestion({super.key, required this.specialRecommendResult});
 
   @override
-  State<Hmsuggestion> createState() => _HmsuggestionState();
+  State<HmSuggestion> createState() => _HmSuggestionState();
 }
 
-class _HmsuggestionState extends State<Hmsuggestion> {
+class _HmSuggestionState extends State<HmSuggestion> {
   List<GoodsItem> _getDisplayItems() {
     if (widget.specialRecommendResult.subTypes.isEmpty) return [];
     return widget.specialRecommendResult.subTypes.first.goodsItems.items

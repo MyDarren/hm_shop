@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:hm_shop/viewmodels/home.dart';
 
-class Hmmorelist extends StatefulWidget {
-  final List<GoodDetailItem> recommandList;
-  const Hmmorelist({super.key, required this.recommandList});
+class HmMorelist extends StatefulWidget {
+  final List<GoodDetailItem> recommendList;
+  const HmMorelist({super.key, required this.recommendList});
 
   @override
-  State<Hmmorelist> createState() => _HmmorelistState();
+  State<HmMorelist> createState() => _HmMorelistState();
 }
 
-class _HmmorelistState extends State<Hmmorelist> {
+class _HmMorelistState extends State<HmMorelist> {
   Widget _getChildren(index) {
     return Column(
       children: [
@@ -19,7 +19,7 @@ class _HmmorelistState extends State<Hmmorelist> {
             child: AspectRatio(
               aspectRatio: 1,
               child: Image.network(
-                widget.recommandList[index].picture,
+                widget.recommendList[index].picture,
                 fit: BoxFit.cover,
                 errorBuilder: (context, error, stackTrace) {
                   return Image.asset("lib/assets/home_cmd_inner.png");
@@ -32,7 +32,7 @@ class _HmmorelistState extends State<Hmmorelist> {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 10),
           child: Text(
-            widget.recommandList[index].name,
+            widget.recommendList[index].name,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(color: Colors.black, fontSize: 16),
@@ -47,7 +47,7 @@ class _HmmorelistState extends State<Hmmorelist> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text.rich(TextSpan(
-                  text: "¥${widget.recommandList[index].price}",
+                  text: "¥${widget.recommendList[index].price}",
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 20,
@@ -55,14 +55,14 @@ class _HmmorelistState extends State<Hmmorelist> {
                   children: [
                     TextSpan(text: " "),
                     TextSpan(
-                        text: widget.recommandList[index].price,
+                        text: widget.recommendList[index].price,
                         style: TextStyle(
                             color: Colors.grey,
                             fontSize: 12,
                             decoration: TextDecoration.lineThrough))
                   ])),
               Text(
-                "${widget.recommandList[index].orderNum}人付款",
+                "${widget.recommendList[index].orderNum}人付款",
                 style: TextStyle(color: Colors.grey, fontSize: 12),
               )
             ],
@@ -75,7 +75,7 @@ class _HmmorelistState extends State<Hmmorelist> {
   @override
   Widget build(BuildContext context) {
     return SliverGrid.builder(
-        itemCount: widget.recommandList.length,
+        itemCount: widget.recommendList.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 10,

@@ -2,15 +2,15 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:hm_shop/viewmodels/home.dart';
 
-class Hmslider extends StatefulWidget {
+class HmSlider extends StatefulWidget {
   final List<BannerItem> bannerList;
-  const Hmslider({super.key, required this.bannerList});
+  const HmSlider({super.key, required this.bannerList});
 
   @override
-  State<Hmslider> createState() => _HmsliderState();
+  State<HmSlider> createState() => _HmSliderState();
 }
 
-class _HmsliderState extends State<Hmslider> {
+class _HmSliderState extends State<HmSlider> {
   int _currentIndex = 0;
   final CarouselSliderController _controller = CarouselSliderController();
 

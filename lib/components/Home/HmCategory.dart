@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:hm_shop/viewmodels/home.dart';
 
-class Hmcategory extends StatefulWidget {
+class HmCategory extends StatefulWidget {
   final List<CategoryItem> categoryList;
-  const Hmcategory({super.key, required this.categoryList});
+  const HmCategory({super.key, required this.categoryList});
 
   @override
-  State<Hmcategory> createState() => _HmcategoryState();
+  State<HmCategory> createState() => _HmCategoryState();
 }
 
-class _HmcategoryState extends State<Hmcategory> {
+class _HmCategoryState extends State<HmCategory> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
