@@ -48,6 +48,6 @@ class DioRequest {
   }
 }
 
-final diorequest = DioRequest();
+final dioRequest = DioRequest();
 // dio请求工具发出请求，返回的数据 Response<dynamic>.data
 // 把所有接口的data解放出来，拿到真正的数据，要判断业务状态码是不是等于1

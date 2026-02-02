@@ -6,7 +6,7 @@ import 'package:hm_shop/viewmodels/home.dart';
 // 获取Banner列表
 Future<List<BannerItem>> getBannerListAPI() async {
   // 返回请求
-  return ((await diorequest.get(HttpConstants.BANNER_LIST)) as List)
+  return ((await dioRequest.get(HttpConstants.BANNER_LIST)) as List)
       .map((item) {
     return BannerItem.fromJson(item as Map<String, dynamic>);
   }).toList();
@@ -15,7 +15,7 @@ Future<List<BannerItem>> getBannerListAPI() async {
 // 获取分类列表
 Future<List<CategoryItem>> getCategoryListAPI() async {
   // 返回请求
-  return ((await diorequest.get(HttpConstants.CATEGORY_LIST)) as List)
+  return ((await dioRequest.get(HttpConstants.CATEGORY_LIST)) as List)
       .map((item) {
     return CategoryItem.fromJson(item as Map<String, dynamic>);
   }).toList();
@@ -25,28 +25,28 @@ Future<List<CategoryItem>> getCategoryListAPI() async {
 Future<SpecialRecommendResult> getSpecialRecommendListAPI() async {
   // 返回请求
   return SpecialRecommendResult.fromJson(
-      await diorequest.get(HttpConstants.SPECIAL_RECOMMEND_LIST));
+      await dioRequest.get(HttpConstants.SPECIAL_RECOMMEND_LIST));
 }
 
 // 获取热榜推荐列表
 Future<SpecialRecommendResult> getInVogueListAPI() async {
   // 返回请求
   return SpecialRecommendResult.fromJson(
-      await diorequest.get(HttpConstants.IN_VOGUE_LIST));
+      await dioRequest.get(HttpConstants.IN_VOGUE_LIST));
 }
 
 // 获取一站式推荐列表
 Future<SpecialRecommendResult> getOneStopListAPI() async {
   // 返回请求
   return SpecialRecommendResult.fromJson(
-      await diorequest.get(HttpConstants.ONE_STOP_LIST));
+      await dioRequest.get(HttpConstants.ONE_STOP_LIST));
 }
 
 // 获取推荐列表
 Future<List<GoodDetailItem>> getRecommendListAPI(
     Map<String, dynamic> params) async {
   // 返回请求
-  return ((await diorequest.get(HttpConstants.RECOMMEND_LIST, params: params))
+  return ((await dioRequest.get(HttpConstants.RECOMMEND_LIST, params: params))
           as List)
       .map((item) {
     return GoodDetailItem.fromJson(item as Map<String, dynamic>);
