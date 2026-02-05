@@ -24,12 +24,19 @@ class DioRequest {
       }
       handler.reject(DioException(requestOptions: response.requestOptions));
     }, onError: (error, handler) {
-      handler.reject(error);
+      // handler.reject(error);
+      handler.reject(DioException(
+          requestOptions: error.requestOptions,
+          message: error.response?.data["msg"] ?? "异常信息"));
     }));
   }
 
   Future<dynamic> get(String url, {Map<String, dynamic>? params}) {
     return _handleResponse(_dio.get(url, queryParameters: params));
+  }
+
+  Future<dynamic> post(String url, {Map<String, dynamic>? data}) {
+    return _handleResponse(_dio.post(url, data: data));
   }
 
   // 进一步处理返回结果的函数
@@ -41,9 +48,12 @@ class DioRequest {
         // 才认定http状态和业务状态均正常，就可以正常的放行通过
         return data["result"];
       }
-      throw Exception(data["msg"] ?? "加载数据异常");
+      // throw Exception(data["msg"] ?? "加载数据异常");
+      throw DioException(
+          requestOptions: res.requestOptions, message: data["msg"] ?? "加载数据失败");
     } catch (e) {
-      throw Exception(e);
+      // throw Exception(e);
+      rethrow; // 不改变原来抛出的异常类型
     }
   }
 }
