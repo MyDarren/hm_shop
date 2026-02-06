@@ -21,7 +21,7 @@ class _MineViewState extends State<MineView> {
   List<GoodDetailItem> _list = [];
   ScrollController _controller = ScrollController();
   Map<String, dynamic> _params = {"page": 1, "pageSize": 10};
-  final Usercontroller _usercontroller = Get.put(Usercontroller());
+  final Usercontroller _usercontroller = Get.find();
 
   Widget _buildHeader() {
     return Container(

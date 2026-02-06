@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hm_shop/api/user.dart';
+import 'package:hm_shop/stores/TokenManager.dart';
 import 'package:hm_shop/stores/userController.dart';
 import 'package:hm_shop/utils/toastUtils.dart';
 
@@ -137,10 +138,12 @@ class _LoginPageState extends State<LoginPage> {
 
   void _login() async {
     try {
-      final res = await login(
+      final res = await loginAPI(
           {"account": _phoneController.text, "password": _codeController.text});
       // print(res);
       _usercontroller.updateUserInfo(res);
+      // 写入持久化
+      tokenManager.setToken(res.token);
       ToastUtils.showToast(context, "登录成功");
       Navigator.pop(context);
     } catch (e) {

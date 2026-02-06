@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:hm_shop/api/user.dart';
 import 'package:hm_shop/pages/Cart/index.dart';
 import 'package:hm_shop/pages/Category/index.dart';
 import 'package:hm_shop/pages/Home/index.dart';
 import 'package:hm_shop/pages/Mine/index.dart';
+import 'package:hm_shop/stores/TokenManager.dart';
+import 'package:hm_shop/stores/userController.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -37,6 +41,7 @@ class _MainPageState extends State<MainPage> {
       "active_icon": "lib/assets/ic_public_my_active.png"
     },
   ];
+  final Usercontroller _usercontroller = Get.put(Usercontroller());
 
   List<BottomNavigationBarItem> _getTabBarWidget() {
     return List.generate(_tabList.length, (index) {
@@ -57,6 +62,22 @@ class _MainPageState extends State<MainPage> {
 
   List<Widget> _getChildren() {
     return [HomeView(), CategoryView(), CartView(), MineView()];
+  }
+
+  _initUser() async {
+    await tokenManager.init(); // 初始化token
+    if (tokenManager.getToken().isNotEmpty) {
+      // 如果token有值就获取用户信息
+      _usercontroller.updateUserInfo(await getUserInfoAPI());
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    // 初始化用户
+    _initUser();
   }
 
   @override
