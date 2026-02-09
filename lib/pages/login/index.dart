@@ -5,7 +5,7 @@ import 'package:hm_shop/api/user.dart';
 import 'package:hm_shop/stores/TokenManager.dart';
 import 'package:hm_shop/stores/UserController.dart';
 import 'package:hm_shop/utils/LoadingDialog.dart';
-import 'package:hm_shop/utils/toastUtils.dart';
+import 'package:hm_shop/utils/ToastUtils.dart';
 
 // 可用账号：13200000001 -- 13200000010
 // 可用密码：123456
@@ -160,43 +160,44 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "惠多美登录",
-          style: TextStyle(fontWeight: FontWeight.bold),
+        appBar: AppBar(
+          title: Text(
+            "惠多美登录",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          backgroundColor: Colors.white,
         ),
-        backgroundColor: Colors.white,
-      ),
-      body: Form(
-          key: _key,
-          child: Container(
-            padding: EdgeInsets.all(30),
-            color: Colors.white,
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 20,
+        body: SingleChildScrollView(
+          child: Form(
+              key: _key,
+              child: Container(
+                padding: EdgeInsets.all(30),
+                color: Colors.white,
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    _buildHeader(),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    _buildPhoneTextFiled(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    _buildCodeTextFiled(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    _buildCheckbox(),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    _buildLoginButton()
+                  ],
                 ),
-                _buildHeader(),
-                SizedBox(
-                  height: 30,
-                ),
-                _buildPhoneTextFiled(),
-                SizedBox(
-                  height: 20,
-                ),
-                _buildCodeTextFiled(),
-                SizedBox(
-                  height: 20,
-                ),
-                _buildCheckbox(),
-                SizedBox(
-                  height: 20,
-                ),
-                _buildLoginButton()
-              ],
-            ),
-          )),
-    );
+              )),
+        ));
   }
 }

@@ -25,7 +25,7 @@ class _HmHotState extends State<HmHot> {
     return Row(
       children: [
         Text(
-          widget.type == "step" ? "一站买全" : "热榜推荐",
+          widget.type == "step" ? "一站买全" : "爆款推荐",
           style: TextStyle(
               color: Color.fromARGB(255, 86, 24, 20),
               fontSize: 18,
@@ -47,6 +47,7 @@ class _HmHotState extends State<HmHot> {
     return _items.map((item) {
       return Expanded(
           child: Container(
+        // width: 80,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
         ),
@@ -56,14 +57,14 @@ class _HmHotState extends State<HmHot> {
               borderRadius: BorderRadius.circular(12),
               child: Image.network(
                 item.picture,
-                width: 80,
+                // width: 80,
                 height: 100,
                 fit: BoxFit.cover,
                 // 当图片构建失败，返回一个新的组件替换原有图片
                 errorBuilder: (context, error, stackTrace) {
                   return Image.asset(
                     "lib/assets/home_cmd_inner.png",
-                    width: 80,
+                    // width: 80,
                     height: 100,
                     fit: BoxFit.cover,
                   );

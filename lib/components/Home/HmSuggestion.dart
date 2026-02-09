@@ -49,21 +49,22 @@ class _HmSuggestionState extends State<HmSuggestion> {
   List<Widget> _getChildrenList() {
     List<GoodsItem> list = _getDisplayItems();
     return List.generate(list.length, (index) {
-      return Column(
+      return Expanded(
+          child: Column(
         children: [
           // ClipRRect可以包裹子元素，裁剪图片设置圆角
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: Image.network(
               list[index].picture,
-              width: 100,
+              // width: 100,
               height: 140,
               fit: BoxFit.cover,
               // 当图片构建失败，返回一个新的组件替换原有图片
               errorBuilder: (context, error, stackTrace) {
                 return Image.asset(
                   "lib/assets/home_cmd_inner.png",
-                  width: 100,
+                  // width: 100,
                   height: 140,
                   fit: BoxFit.cover,
                 );
@@ -74,15 +75,16 @@ class _HmSuggestionState extends State<HmSuggestion> {
             height: 10,
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             alignment: Alignment.center,
             decoration: BoxDecoration(
-                color: Colors.red, borderRadius: BorderRadius.circular(15)),
+                color: Color.fromARGB(255, 240, 96, 12),
+                borderRadius: BorderRadius.circular(12)),
             child: Text("¥${list[index].price}",
                 style: TextStyle(color: Colors.white)),
           ),
         ],
-      );
+      ));
     });
   }
 
@@ -108,8 +110,12 @@ class _HmSuggestionState extends State<HmSuggestion> {
             Row(
               children: [
                 _buildLeft(),
+                SizedBox(
+                  width: 10,
+                ),
                 Expanded(
                     child: Row(
+                  spacing: 10,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: _getChildrenList(),
                 ))
