@@ -41,7 +41,7 @@ class _HmSliderState extends State<HmSlider> {
 
   Widget _getSearch() {
     return Positioned(
-        top: 10,
+        top: MediaQuery.of(context).padding.top,
         left: 0,
         right: 0,
         child: Padding(

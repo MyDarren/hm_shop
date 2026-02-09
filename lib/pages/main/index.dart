@@ -86,11 +86,15 @@ class _MainPageState extends State<MainPage> {
       //appBar: AppBar(title: Text("主页"),),
       //body: Center(child: Text("主页")),
       // SafeArea避开安全区组件
-      body: SafeArea(
-          child: IndexedStack(
+      // body: SafeArea(
+      //     child: IndexedStack(
+      //   index: _currentIndex,
+      //   children: _getChildren(),
+      // )),
+      body: IndexedStack(
         index: _currentIndex,
         children: _getChildren(),
-      )),
+      ),
       bottomNavigationBar: BottomNavigationBar(
           showUnselectedLabels: true,
           selectedItemColor: Colors.black,

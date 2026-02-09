@@ -115,7 +115,7 @@ class _HmSuggestionState extends State<HmSuggestion> {
                 ),
                 Expanded(
                     child: Row(
-                  spacing: 10,
+                  // spacing: 10,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: _getChildrenList(),
                 ))
