@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hm_shop/api/user.dart';
 import 'package:hm_shop/stores/TokenManager.dart';
-import 'package:hm_shop/stores/userController.dart';
+import 'package:hm_shop/stores/UserController.dart';
+import 'package:hm_shop/utils/LoadingDialog.dart';
 import 'package:hm_shop/utils/toastUtils.dart';
 
 // 可用账号：13200000001 -- 13200000010
@@ -138,15 +139,18 @@ class _LoginPageState extends State<LoginPage> {
 
   void _login() async {
     try {
+      LoadingDialog.show(context, message: "努力登录中");
       final res = await loginAPI(
           {"account": _phoneController.text, "password": _codeController.text});
       // print(res);
       _usercontroller.updateUserInfo(res);
       // 写入持久化
       tokenManager.setToken(res.token);
+      LoadingDialog.hide(context);
       ToastUtils.showToast(context, "登录成功");
       Navigator.pop(context);
     } catch (e) {
+      LoadingDialog.hide(context);
       ToastUtils.showToast(context, (e as DioException).message);
     }
     // 此时一定登录成功

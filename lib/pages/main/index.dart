@@ -6,7 +6,7 @@ import 'package:hm_shop/pages/Category/index.dart';
 import 'package:hm_shop/pages/Home/index.dart';
 import 'package:hm_shop/pages/Mine/index.dart';
 import 'package:hm_shop/stores/TokenManager.dart';
-import 'package:hm_shop/stores/userController.dart';
+import 'package:hm_shop/stores/UserController.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
