@@ -75,14 +75,16 @@ class _HmSuggestionState extends State<HmSuggestion> {
             height: 10,
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-                color: Color.fromARGB(255, 240, 96, 12),
-                borderRadius: BorderRadius.circular(12)),
-            child: Text("¥${list[index].price}",
-                style: TextStyle(color: Colors.white)),
-          ),
+              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 240, 96, 12),
+                  borderRadius: BorderRadius.circular(12)),
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text("¥${list[index].price}",
+                    style: TextStyle(color: Colors.white)),
+              )),
         ],
       ));
     });
@@ -114,11 +116,16 @@ class _HmSuggestionState extends State<HmSuggestion> {
                   width: 10,
                 ),
                 Expanded(
-                    child: Row(
-                  // spacing: 10,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: _getChildrenList(),
-                ))
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      for (int i = 0; i < _getChildrenList().length; i++) ...[
+                        if (i > 0) SizedBox(width: 10),
+                        _getChildrenList()[i],
+                      ],
+                    ],
+                  ),
+                )
               ],
             )
           ],

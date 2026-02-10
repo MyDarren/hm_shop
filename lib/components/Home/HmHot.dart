@@ -88,10 +88,10 @@ class _HmHotState extends State<HmHot> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10),
+      padding: EdgeInsets.symmetric(horizontal: 0),
       child: Container(
         alignment: Alignment.center,
-        padding: EdgeInsets.all(12),
+        padding: EdgeInsets.only(top: 10, left: 15, right: 15),
         decoration: BoxDecoration(
           color: widget.type == "step"
               ? Color.fromARGB(255, 249, 247, 219)
